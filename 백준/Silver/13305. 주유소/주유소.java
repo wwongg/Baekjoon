@@ -4,10 +4,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-       int N = scan.nextInt();
-       int[] length = new int[N + 1];
-       int[] cost = new int[N + 2];
-       int result = 0;
+       long N = scan.nextLong();
+       long[] length = new long[(int) (N + 1)];
+       long[] cost = new long[(int) (N + 2)];
+       long result = 0;
 
 
        for(int i = 1; i <= N - 1; i++) {
@@ -17,7 +17,7 @@ public class Main {
             cost[i] = scan.nextInt();
         }
 
-       int costMin = cost[1];
+       long costMin = cost[1];
 
 
 
