@@ -1,43 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node{
-	int data;
-	struct Node* left;
-	struct Node* right;
-}Node;
+typedef struct node{
+	int key;
+	struct node* left;
+	struct node* right;
+	
+}node;
 
-Node* insert(Node* node, int input) {
-	if(node == NULL) {
-		Node* node = (Node*) malloc(sizeof(Node));
-		node->data = input;
-		node->left = node->right = NULL;
-		return node;
+node* insert(node* root, int input) {
+	if(root == NULL) {
+		node* root = (node*) malloc(sizeof(node));
+		root->key = input;
+		root->left = root->right = NULL;
+		return root; 
 	}
-	else if(node->data > input) {
-		node->left = insert(node->left, input);
+	else if(root->key > input) {
+		root->left = insert(root->left, input);
 	}
-	else if(node->data < input){
-		node->right = insert(node->right, input);
+	else if(root->key < input) {
+		root->right = insert(root->right, input);
 	}
-	return node;
+	return root;
 }
 
-void postorder(Node* node){
-	if(node == NULL) return;
-	postorder(node->left);
-	postorder(node->right);
-	printf("%d\n", node->data);
-	return;
+void post(node* root) {
+	if(root == NULL) {
+		return;
+	}
+	
+	post(root->left);
+	post(root->right);
+	printf("%d\n", root->key);
 }
 
-int main() {
-	int x;
-	Node* node = NULL;
-	while(scanf("%d\n", &x)!= EOF) {
-		node = insert(node, x);	
+int main(){
+	int n;
+	node* root = NULL;
+	
+	while(scanf("%d\n", &n) != EOF) {
+		root = insert(root, n);
 	}
-	postorder(node);
+	post(root);
 	
 	return 0;
 }
