@@ -1,5 +1,3 @@
-
-
 import java.io.*;
 import java.util.Scanner;
 
@@ -7,9 +5,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Scanner scan = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = scan.nextInt();
+        int N = Integer.parseInt(br.readLine());
 
         int front = 1;
         int back = N;
@@ -36,11 +34,3 @@ public class Main {
 
 
 }
-
-
-
-
-
-
-
-
