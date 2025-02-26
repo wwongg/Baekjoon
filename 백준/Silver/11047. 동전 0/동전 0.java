@@ -1,34 +1,48 @@
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
+
 public class Main {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
 
-        int N = scan.nextInt(); // 동전 종류 수
-        int[] coin = new int[N];
-        int count = 0; // 동전 개수
+    public static void main(String[] args) throws IOException {
 
-        int K = scan.nextInt(); // 찾고자 하는 가격
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        for(int i = 0; i < N; i++) {
-            coin[i] = scan.nextInt();
+        String[] input = br.readLine().split(" ");
+        int n = Integer.parseInt(input[0]);
+        int coin = Integer.parseInt(input[1]);
+
+        int count = 0;
+
+        int[] coinUnit = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            coinUnit[i] = Integer.parseInt(br.readLine());
         }
 
 
-        for(int i = N - 1; i >= 0; i--) {
-            if (coin[i] <= K) {
-                count += K / coin[i];
-                K %= coin[i];
+
+            for (int i = n - 1; i >= 0; i--) {
+                if (coin / coinUnit[i] > 0) {
+                    count += (coin / coinUnit[i]);
+                    coin %= coinUnit[i];
+                    i++;
+                }
             }
-        }
 
         System.out.println(count);
 
 
+
+
+
     }
-
-
 }
+
 
 
 
