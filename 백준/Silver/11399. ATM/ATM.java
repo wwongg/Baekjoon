@@ -1,34 +1,49 @@
+
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
+
 public class Main {
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
 
-        int N = scan.nextInt();
+    public static void main(String[] args) throws IOException {
 
-        int[] P = new int[N];
-        int prevSum = 0;
-        int sum = 0;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        for(int i = 0; i < N; i++) {
-            P[i] = scan.nextInt();
+        int n = Integer.parseInt(br.readLine());
+
+        int[] atm = new int[n];
+
+        String[] input = br.readLine().split(" ");
+
+        for (int i = 0; i < n; i++) {
+            atm[i] = Integer.parseInt(input[i]);
         }
 
-        Arrays.sort(P);
+        Arrays.sort(atm);
 
-        for(int i = 0; i < N; i++) {
-            sum += P[i];
-            prevSum += sum;
+        int time = 0;
+        int result = 0;
+
+        for (int i = 0; i < n; i++) {
+            time += atm[i];
+            result += time;
         }
 
-        System.out.println(prevSum);
-
+        System.out.println(result);
 
 
 
 
     }
-
-
 }
+
+
+
+
+
+
+
+
